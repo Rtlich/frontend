@@ -1,0 +1,48 @@
+.container-fluid{
+    background-color: rgb(24, 24, 24);
+   
+}
+.content-body{
+    background-color: rgb(24, 24, 24);
+}
+.metismenu{
+    background-color: rgb(24, 24, 24);
+}
+.nav-header{
+    background-color: rgb(24, 24, 24);
+}
+.header{
+    background-color: rgb(24, 24, 24);
+}
+
+
+
+.welcome-text h4{
+    color: white;
+}
+
+.page-titles .breadcrumb li a{
+    color: rgb(228, 191, 91);
+}
+ .barre{
+    padding:0 0 0 20px;
+    display: flex;
+    
+    align-items: center;
+    background-color: #e4bf5b;
+    border-radius: 28px 28px 28px 28px ;
+
+}
+
+ 
+.deznav{
+    background-color: rgb(24, 24, 24) !important;
+}
+
+.profile-personal-info{
+    margin-top: 20px;
+}
+
+.profile_right{
+    background-color: rgb(211, 149, 57) !important;
+}

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Ticketeasy</title>
+  <link rel="shortcut icon" href="./Images/Logo/titlee.png" type="image/x-icon">
+
+  <!-- Font   <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link href="./static/style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="static/bootstrap.min.css">
+  <link rel="stylesheet" href="static/style-min.css">
+  <link rel="stylesheet" href="cards.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <!-- Include jQuery library -->
+<script src="jquery-ui-1.13.2\jquery-ui-1.13.2\external\jquery\jquery.js"></script>
+
+<!-- Include jQuery UI library -->
+<script src="jquery-ui-1.13.2\jquery-ui-1.13.2\jquery-ui.js"></script>
+
+<!-- Include raindrops.js -->
+<script src="raindrops-master/raindrops-master/raindrops.js"></script>
+
+</head>
+
+<!------------------------Scroll to top button------------------------------------------------>
+<style>
+  #scrollToTopButton{
+position:fixed;
+bottom: 40px;
+right: 25px;
+font-size: 25px;
+z-index: 99;
+width: 50px;
+height: 50px;
+background-color:red;
+color:black;
+border: none;
+cursor: pointer;
+outline: none;
+padding: 6px;
+border-radius: 50%;
+}
+#scrollToTopButton:hover, i:hover {
+background-color:white;
+color:red;
+}
+#header-nav .nav-link {
+  color: white;
+  font-size: 20px;
+  margin-left: 20px;
+}
+    @media only screen and (max-width: 1400px){
+  #header-nav .nav-link {
+    color: white;
+    font-size: 18px;
+    margin-left: 18px;
+  }
+  #searchText{
+    width: 150px;
+  }
+}
+
+@media only screen and (min-width: 1133px) and (max-width: 1275px) {
+  #header-nav .nav-link {
+    color: white;
+    font-size: 15px;
+    margin-left: 10px;
+  } 
+}
+@media only screen and (min-width: 1035px) and (max-width: 1132px) {
+  #header-nav .nav-link {
+    color: white;
+    font-size: 15px;
+    margin-left: 10px;
+  } 
+  #searchText{
+    width: 120px;
+  }
+  #submitBtn{
+    width: 60px;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 993px) and (max-width: 1034px) {
+  #header-nav .nav-link {
+    color: white;
+    font-size: 14px;
+    margin-left: 10px;
+  } 
+
+#searchText{
+  width: 100px;
+}
+#submitBtn{
+  width: 50px;
+  display: flex;
+  justify-content: center;
+}
+}
+
+.container {
+  text-align: center;
+}
+.nav-item :hover{
+  margin-bottom: 10px;
+  /* background-color: aquamarine; */
+  border-bottom: 3px;
+  border-color: red;
+  border-bottom-style: solid;
+}
+#alert-box
+  {
+    background-color: red;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: fixed;
+    top: 16%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+  }
+
+</style>
+
+<body>
+    <div class="scroll-bar">
+
+        <!-- navbar starts -->
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark" id="header-nav">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="home.html"><img class="logo" src="Images/TheaterLogoFinal.png" alt="" width="30"
+                height="24"></a>
+            <button id="nav" class="navbar-toggler" id="nav" style="background-color:#8b0000" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon" style="background-color:dark-grey;"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="movies.html">Movies</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " onmouseover="booknow()" onmouseout="hideAlert()" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='white'" >Book Now</a>
+                  <script>
+                    function booknow() {
+                      var alertBox = document.createElement("div");
+                      alertBox.id = "alert-box";
+                      alertBox.innerHTML = "Pick a Movie First and then click Buy Now";
+                      alertBox.style.backgroundColor = "red";
+                      alertBox.style.color = "white";
+                      alertBox.style.padding = "20px";
+                      alertBox.style.borderRadius = "10px";
+                      alertBox.style.textAlign = "center";
+                      alertBox.style.position = "fixed";
+                      alertBox.style.top = "16%";
+                      alertBox.style.left = "50%";
+                      alertBox.style.transform = "translateX(-50%)";
+                      alertBox.style.zIndex = "9999";
+                      document.body.appendChild(alertBox);
+      }
+      function hideAlert() {
+        var alertBox = document.getElementById("alert-box");
+        if (alertBox) {
+          alertBox.parentNode.removeChild(alertBox);
+        }
+      }
+                  </script>
+                  
+                
+                </li>
+                <!--reservation-->
+                <li class="nav-item">
+                  <a class="nav-link" href="kids.html">Kids</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="tv.html">TV</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="premium.html">Premium</a>
+                </li>
+              
+                <li class="nav-item">
+                  <a class="nav-link" href="contactus.html">Contact Us</a>
+                </li>
+                <li>
+                  <!-- Genre dropdown starts-->
+                  <div>
+                    <div class="dropdown" style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;">
+                        <button class="btn btn-outline-danger dropdown-toggle" type="button" id="dropdownMenuButton" style="font-size:20px;">
+                            Genres
+                        </button>
+                        <div class="dropdown-content" style="color: white;">
+                            <a href="crime.html">Crime</a>
+                            <a href="suspense.html">Suspense & Thriller</a>
+                            <a href="action.html">Action</a>
+                            <a href="fantasy.html">Sci-Fi & Fantasy</a>
+                            <a href="documentary.html">Documentary</a>
+                            <a href="horror.html">Horror</a>
+                            <a href="drama.html">Drama</a>
+                            <a href="war.html">War & Politics</a>
+                            <a href="comedy.html">Comedy</a>
+                            <a href="romance.html">Romance</a>
+                          
+                          </div>
+                    </div>
+                  </div>
+                  <!-- Genre dropdown ends-->
+                </li>
+                <div style="position: relative; display: inline-block; padding-top: 5px; padding-left: 15px;">
+                  <li>
+                    <button  type="button" class="btn btn-light" onclick="logout()">Logout</button>
+                  </li>
+                </div>
+              </ul>
+              <form id="searchForm" class="d-flex">
+                <input class="form-control me-2" type="text" id="searchText" placeholder="Search" aria-label="Search">
+                <button class="btn btn-danger" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+          </nav>
+    
+            <!-- navbar ends -->
+
+        <div class="maincontainer">
+            <div class="container">
+                <div id="movies" class="row"></div>
+            </div>
+            <hr>
+            <h2>Sci-Fi & Fantasy</h2>
+            <hr>
+            <div class="container" id="Movies">
+
+                <div class="poster">
+                  <div class="flip-card_i">
+                    <div class="flip-card-inner_i">
+                      <div class="flip-card-front_i">
+                          <img src="./Images/inter.jpg" alt="Avatar" style="width:250px;height:360px;">
+                      </div>
+                      <div class="flip-card-back_i">
+                        <h1>Interstellar</h1>
+                          <button class="btn_i b3_i"  title="Year" style="color:white">2014</button>
+                          <button class="btn_i b2_i"  title="Minutes" style="color:white">2h49m</button>
+                          <button class="btn_i b1_i"  title="IMDb" style="color:white">8.6</button>
+                        </span>
+                        <br />
+                        <br />
+                      </p>
+
+                        <p class="para_i">When Earth becomes uninhabitable in the future, a farmer
+                           and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.</p>
+
+                         
+                          <button class="trailer_i" type="submit" value="" onclick="openWin1()">▶Trailer</button>
+                          <script type="text/javascript">
+                            function openWin1(){
+                              window.open("https://www.imdb.com/video/vi1586278169?playlistId=tt0816692&ref_=tt_ov_vi","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                            }
+                          </script><br>
+                          <br>
+                          <button class="btn_i b4_i" type="submit" value="" onclick="openMovieWin11('Interstellar')" style=" height: 0.75cm; width:2.5cm; ">
+                            <img src="Images\Logo\11.png" alt="Ticket" style="height: 80%; width: auto;">
+                            Buy Now
+                          </button>                  
+                                            <script type="text/javascript">
+                                              function openMovieWin11(movieName){
+                                                var url = "Book Now.php?movie=" + encodeURIComponent(movieName);
+                                                     window.location.href = url;                      }
+                                            </script>
+                      </div>
+                        <div class="flim">
+                            <b>Interstellar</b>
+                            <br>
+                            IMDb - 8.6
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="poster">
+                  <div class="flip-card_i">
+                    <div class="flip-card-inner_i">
+                      <div class="flip-card-front_i">
+                          <img src="./Images/gravity.jpg" alt="Avatar" style="width:250px;height:360px;">
+                      </div>
+                      <div class="flip-card-back_i">
+                        <h1>Gravity</h1>
+                          <button class="btn_i b3_i"  title="Year" style="color:white">2013</button>
+                          <button class="btn_i b2_i"  title="Seasons" style="color:white">1h31m</button>
+                          <button class="btn_i b1_i"  title="IMDb" style="color:white">7.7</button>
+                        </span>
+                        <br />
+                        <br />
+                      </p>
+
+                        <p class="para_i">Two astronauts work together
+                          to survive after an accident leaves them stranded in space.</p>
+
+                          
+                            <button class="trailer_i" type="submit" value="" onclick="openWin2()">▶Trailer</button>
+                            <script type="text/javascript">
+                              function openWin2(){
+                                window.open("https://www.imdb.com/video/vi2340006169?playlistId=tt1454468","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                              }
+                            </script><br>
+                          <br>
+                          <button class="btn_i b4_i" type="submit" value="" onclick="openMovieWin11('Gravity')" style=" height: 0.75cm; width:2.5cm; ">
+                            <img src="Images\Logo\11.png" alt="Ticket" style="height: 80%; width: auto;">
+                            Buy Now
+                          </button>                  
+                                            <script type="text/javascript">
+                                              function openMovieWin11(movieName){
+                                                var url = "Book Now.php?movie=" + encodeURIComponent(movieName);
+                                                     window.location.href = url;                      }
+                                            </script>
+
+                      </div>
+                        <div class="flim">
+                            <b>Gravity</b>
+                            <br>
+                            IMDb - 7.7
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="poster">
+                  <div class="flip-card_i">
+                    <div class="flip-card-inner_i">
+                      <div class="flip-card-front_i">
+                          <img src="./Images/kong.jpg" alt="Avatar" style="width:250px;height:360px;">
+                      </div>
+                      <div class="flip-card-back_i">
+                        <h1 style="font-size: 30px;">Godzilla vs Kong</h1>
+                          <button class="btn_i b3_i"  title="Year" style="color:white">2021</button>
+                          <button class="btn_i b2_i"  title="Time" style="color:white">1h53m</button>
+                          <button class="btn_i b1_i"  title="IMDb" style="color:white">6.4</button>
+                        </span>
+                        <br />
+                        <br />
+                      </p>
+
+                        <p class="para_i">The epic next chapter in the cinematic Monsterverse pits two of the greatest icons in motion picture history against one another - the
+                           fearsome Godzilla and the mighty Kong - with humanity caught in the balance.</p>
+
+                              
+                            <button class="trailer_i" type="submit" value="" onclick="openWin4()">▶Trailer</button>
+                            <script type="text/javascript">
+                              function openWin4(){
+                                window.open("https://www.imdb.com/video/vi576962841?playlistId=tt5034838","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                              }
+                            </script><br>
+                          <br>
+                          <button class="btn_i b4_i" type="submit" value="" onclick="openMovieWin11('Godzilla vs Kong')" style=" height: 0.75cm; width:2.5cm; ">
+                            <img src="Images\Logo\11.png" alt="Ticket" style="height: 80%; width: auto;">
+                            Buy Now
+                          </button>                  
+                                            <script type="text/javascript">
+                                              function openMovieWin11(movieName){
+                                                var url = "Book Now.php?movie=" + encodeURIComponent(movieName);
+                                                     window.location.href = url;                      }
+                                            </script>
+                      </div>
+                        <div class="flim">
+                            <b>Godzilla vs Kong</b>
+                            <br>
+                            IMDb - 6.4
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="poster">
+                  <div class="flip-card_i">
+                    <div class="flip-card-inner_i">
+                      <div class="flip-card-front_i">
+                          <img src="./Images/tenet.jpg" alt="Avatar" style="width:250px;height:360px;">
+                      </div>
+                      <div class="flip-card-back_i">
+                        <h1>Tenet</h1>
+                          <button class="btn_i b3_i"  title="Year" style="color:white">2020</button>
+                          <button class="btn_i b2_i"  title="Time" style="color:white">2h30m</button>
+                          <button class="btn_i b1_i"  title="IMDb" style="color:white">7.4</button>
+                        </span>
+                        <br />
+                        <br />
+                      </p>
+
+                        <p class="para_i">Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international
+                           espionage on a mission that will unfold in something beyond real time.</p>
+
+                         
+                            <button class="trailer_i" type="submit" value="" onclick="openWin7()">▶Trailer</button>
+                            <script type="text/javascript">
+                              function openWin7(){
+                                window.open("https://www.imdb.com/video/vi2051194393?playlistId=tt6723592","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                              }
+                            </script><br><br>
+                        <button class="btn_i b4_i" type="submit" value="" onclick="openMovieWin11('Tenet')" style=" height: 0.75cm; width:2.5cm; ">
+                          <img src="Images\Logo\11.png" alt="Ticket" style="height: 80%; width: auto;">
+                          Buy Now
+                        </button>                  
+                                          <script type="text/javascript">
+                                            function openMovieWin11(movieName){
+                                              var url = "Book Now.php?movie=" + encodeURIComponent(movieName);
+                                                   window.location.href = url;                      }
+                                          </script>
+
+                      </div>
+                        <div class="flim">
+                            <b>Tenet</b>
+                            <br>
+                            IMDb - 7.4
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="poster">
+                  <div class="flip-card_i">
+                    <div class="flip-card-inner_i">
+                      <div class="flip-card-front_i">
+                          <img src="./Images/spider.jpg" alt="Avatar" style="width:250px;height:360px;">
+                      </div>
+                      <div class="flip-card-back_i">
+                        <h1>Spiderman</h1>
+                          <button class="btn_i b3_i"  title="Year" style="color:white">2002</button>
+                          <button class="btn_i b2_i"  title="Time" style="color:white">2h1m</button>
+                          <button class="btn_i b1_i"  title="IMDb" style="color:white">7.3</button>
+                        </span>
+                        <br />
+                        <br />
+                      </p>
+
+                        <p class="para_i">Peter Parker's life changes when he is bitten by a genetically altered spider and gains superpowers. 
+                            He uses his powers to help people and finds himself facing the Green Goblin, an evil maniac.</p>
+
+                         
+                              
+                            <button class="trailer_i" type="submit" value="" onclick="openWin10()">▶Trailer</button>
+                            <script type="text/javascript">
+                              function openWin10(){
+                                window.open("https://www.imdb.com/video/vi422553113?playlistId=tt0145487","_blank","top=100,left=250,height=400,width=600,channelmode=yes,fullscreen=yes,menubar=no,toolbar=no,location=no,status=no,scrollbars=no,noopener=no");
+                              }
+                            </script><br><br>
+                         <button class="btn_i b4_i" type="submit" value="" onclick="openMovieWin11('Spiderman')" style=" height: 0.75cm; width:2.5cm; ">
+                          <img src="Images\Logo\11.png" alt="Ticket" style="height: 80%; width: auto;">
+                          Buy Now
+                        </button>                  
+                                          <script type="text/javascript">
+                                            function openMovieWin11(movieName){
+                                              var url = "Book Now.php?movie=" + encodeURIComponent(movieName);
+                                                   window.location.href = url;                      }
+                                          </script>
+
+                      </div>
+                        <div class="flim">
+                            <b>Spiderman</b>
+                            <br>
+                            IMDb - 7.3
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+  
+    <!-------------------------------Footer-------------------------------->
+    <div id="waterdrop"></div>
+    <footer class="footer">
+      <hr class="footer-hr">
+        <div class="footer-content">
+            <div class="footer-left">
+                <a href="home.html"><img class="footer-logo" src="Images/Logo/TheaterLogo.png" alt="" width="30" height="24"></a>
+                <p class="footer-bottom-tagline">Buy! Watch! Chill! </p>
+            </div>
+            <div class="footer-middle">
+                <h2 class="footer-heading">Follow Us</h2>
+                <ul class="footer-middle-list icons">
+                    <a class="footer-links" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f facebook" style="color:red"></i></a>
+                    <a class="footer-links" href="https://twitter.com/login?lang=en" target="_blank"><i class="fab fa-twitter twitter" style="color:red"></i></a>
+                    <a class="footer-links" href="https://www.linkedin.com/login" target="_blank"><i class="fab fa-linkedin linkedin" style="color:red"></i></a>
+                    <a class="footer-links" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram instagram" style="color:red"></i></a>
+                    <a class="footer-links" href="https://github.com/QAZIMAAZARSHAD/Movie-Streaming-Website" target="_blank"><i class="fab fa-github github" style="color:red"></i></a>
+                </ul>
+            </div>
+            <div class="footer-middle">
+                <h2 class="footer-heading">Services</h2>
+                <ul class="footer-middle-list">
+                    <li class="footer-middle-list-item"><a href="home.html">Enjoy Latest Movies</a> </li>
+                    <li class="footer-middle-list-item"><a onmouseover="booknow()" onmouseout="hideAlert()" href="home.html">Book Your Ticket Now</a> 
+                      <script>
+                        function booknow() {
+                          var alertBox = document.createElement("div");
+                          alertBox.id = "alert-box";
+                          alertBox.innerHTML = "Pick a Movie First and then click Buy Now";
+                          alertBox.style.backgroundColor = "red";
+                          alertBox.style.color = "white";
+                          alertBox.style.padding = "30px";
+                          alertBox.style.borderRadius = "10px";
+                          alertBox.style.textAlign = "center";
+                          alertBox.style.position = "fixed";
+                          alertBox.style.top = "16%";
+                          alertBox.style.left = "50%";
+                          alertBox.style.transform = "translateX(-50%)";
+                          alertBox.style.zIndex = "9999";
+                          document.body.appendChild(alertBox);
+            }
+            function hideAlert() {
+            var alertBox = document.getElementById("alert-box");
+            if (alertBox) {
+              alertBox.parentNode.removeChild(alertBox);
+            }
+            }
+                      </script></li>
+                    <li class="footer-middle-list-item"><a href="kids.html">Everything for Kids</a> </li>
+                    <li class="footer-middle-list-item"><a href="news.html">Coming soon</a> </li>
+                    <li class="footer-middle-list-item"><a href="premium.html">Get Premium Subscription</a> </li>
+                    <li class="footer-middle-list-item"><a href="faq.html">FAQ</a> </li>
+                </ul>
+            </div>
+            <div class="footer-middle">
+              <p class="footer-links">
+                <h2 class="footer-heading">Book Now</h2>
+                <p class="footer-bottom-tagline"> Book your tickets now for an unforgettable cinematic experience.</p>
+                <a class="footer-contact-button" onmouseover="booknow()" onmouseout="hideAlert()" >Book Now</a>
+                </p>
+                <script>
+                  function booknow() {
+                    var alertBox = document.createElement("div");
+                    alertBox.id = "alert-box";
+                    alertBox.innerHTML = "Pick a Movie First and then click Buy Now";
+                    alertBox.style.backgroundColor = "red";
+                    alertBox.style.color = "white";
+                    alertBox.style.padding = "30px";
+                    alertBox.style.borderRadius = "10px";
+                    alertBox.style.textAlign = "center";
+                    alertBox.style.position = "fixed";
+                    alertBox.style.top = "16%";
+                    alertBox.style.left = "50%";
+                    alertBox.style.transform = "translateX(-50%)";
+                    alertBox.style.zIndex = "9999";
+                    document.body.appendChild(alertBox);
+      }
+      function hideAlert() {
+      var alertBox = document.getElementById("alert-box");
+      if (alertBox) {
+        alertBox.parentNode.removeChild(alertBox);
+      }
+      }
+                </script>
+            </div>
+            <div class="footer-right">
+                <p class="footer-links">
+                    <h2 class="footer-heading">Contact Us</h2>
+                    <p class="footer-bottom-tagline">Feel free to contact us.</p>
+                    <a class="footer-contact-button" href="contactus.html">Contact</a>
+                </p>
+            </div>
+        </div>
+        <hr class="footer-hr">
+        <div class="footer-copyright">
+            <p>Copyright &copy; and &reg; Since
+                <script>
+                    document.write(new Date().getFullYear())
+                </script> Under Ticketeasy.com : (Project Is Done By Innovators)</p>
+        </div>
+    </footer>
+<!----------------------------scroll to top button-->
+    <button  id="scrollToTopButton" title="Go to top" class="ml-5" >
+        <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+    </button>
+    <script>
+      $(document).ready(function(){
+        var scrollTopButton = document.getElementById("scrollToTopButton");
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          scrollTopButton.style.display = "block";
+        } else {
+          scrollTopButton.style.display = "none";
+        }
+      }
+
+      $("#scrollToTopButton").click(function(){
+      $('html ,body').animate({scrollTop : 0},800)
+    });
+    });
+    </script>
+    <script>
+      function logout(){
+        window.location.replace("login.html");
+      }
+    </script>
+    <!-- offcanva JS and footer js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://daniellaharel.com/raindrops/js/raindrops.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/main-min.js"></script>
+
+    <script>
+        jQuery('#waterdrop').raindrops({
+            color: '#292c2f',
+            canvasHeight: 150,
+            density: 0.1,
+            frequency: 20
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="./static/script.js"></script>
+</body>
+
+</html>

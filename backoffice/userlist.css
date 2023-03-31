@@ -1,0 +1,40 @@
+#monform{
+   
+    position: absolute;
+    top: 200px;
+
+    z-index: 1111;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    
+}
+
+#monform form input{
+    margin-left: auto;
+    margin-right: auto;
+  
+    display: flex;
+   
+    width: 300px;
+    padding: 10px;
+
+}
+#monform form{
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+  
+    background-color: rgb(255, 0, 0);
+    padding: 10px;
+    border-radius: 9px;
+   
+}
+
+#monform form button {
+    text-align: center;
+    width: 150px;
+   position: relative;
+   left: 90px;
+}
